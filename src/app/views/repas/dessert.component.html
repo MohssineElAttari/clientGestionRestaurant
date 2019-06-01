@@ -1,0 +1,150 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Ajouter Neuvau</strong> Dessert
+        </div>
+        <div class="card-body">
+          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="nom">Nom :</label>
+              <div class="col-md-9">
+                <input type="text" id="nom" name="nom" [(ngModel)]="selectedDessert.nom" class="form-control"
+                  placeholder="Dessert le nom">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="type">Type :</label>
+              <div class="col-md-9">
+                <input type="text" id="type" name="type" [(ngModel)]="selectedDessert.type" class="form-control"
+                  placeholder="Dessert le type">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="info">Info :</label>
+              <div class="col-md-9">
+                <input class="form-control" id="info" type="text" name="info" [(ngModel)]="selectedDessert.info"  placeholder="Dessert le info" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="prix">Prix :</label>
+              <div class="col-md-9">
+                <input type="number" id="prix" name="prix" [(ngModel)]="selectedDessert.prix" class="form-control"
+                  placeholder="Dessert la prix">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="durreCuisson">Durre Cuisson :</label>
+              <div class="col-md-9">
+                <input type="number" id="durreCuisson" name="durreCuisson" [(ngModel)]="selectedDessert.durreCuisson"
+                  class="form-control" placeholder="Dessert la durre Cuisson">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="photo">Photo :</label>
+              <div class="col-md-9">
+                <input type="text" id="photo" name="photo" [(ngModel)]="selectedDessert.photo" class="form-control"
+                  placeholder="Enter le photo" autocomplete="photo">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary"
+            (click)="operation == 'add' ? addDessert() : updateDessert()"><i class="fa fa-dot-circle-o"></i>
+            {{operation == 'add' ? 'Ajouter' :
+                            operation == 'edit' ? 'Modifier' : ''}}
+          </button>
+          <button type="reset" (click)="initDesserts();" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>
+            Annuler</button>
+        </div>
+      </div>
+    </div>
+    <!--/.row-->
+  </div>
+
+  <!--  -->
+  <div bsModal #dangerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-danger" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Attention</h4>
+          <button type="button" class="close" (click)="dangerModal.hide();initDesserts();" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Voulez-vous vraiment supprimer cet Dessert {{selectedDessert.nom}} ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="dangerModal.hide();initDesserts();">Fermer</button>
+          <button type="button" class="btn btn-danger" (click)="deleteDessert();dangerModal.hide();">Confirmer</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <!--/.row-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> La Liste des Desserts
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-responsive table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Info</th>
+                <th>Prix</th>
+                <th>Durre Cuisson</th>
+                <th>Photo</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dessert of desserts">
+                <td>{{dessert.id}}</td>
+                <td>{{dessert.nom}}</td>
+                <td>{{dessert.type}}</td>
+                <td>{{dessert.info}}</td>
+                <td>{{dessert.prix}}</td>
+                <td>{{dessert.durreCuisson}}</td>
+                <td>{{dessert.photo}}</td>
+                <td><button class="btn btn-outline-warning"
+                    (click)="selectedDessert=dessert;operation='edit';">Modifier</button>
+                </td>
+                <td>
+
+                  <button type="button" class="btn btn-outline-danger mr-1" data-toggle="modal"
+                    (click)="selectedDessert=dessert;dangerModal.show()">Supprimer </button>
+
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <!-- <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
