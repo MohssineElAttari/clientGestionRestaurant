@@ -13,6 +13,7 @@ export class BoissonComponent implements OnInit {
   BoissonForm: FormGroup;
   operation: string = 'add';
   selectedBoisson: Boisson;
+  public boissonFile: any = File;
   @ViewChild('dangerModal')
   public dangerModal: ModalDirective;
 
@@ -27,16 +28,23 @@ export class BoissonComponent implements OnInit {
       nom: '',
       type: '',
       info: '',
-      prixRepas: '',
+      prix: '',
       durreCuisson: '',
       photo: '',
     });
   }
-
+  fileChange(event) {
+    const file = event.target.files[0];
+    this.boissonFile = file;
+    console.log(file);
+  }
   addBoisson() {
-    console.log('nom  ' + this.selectedBoisson.nom);
-    const c = this.BoissonForm.value;
-    this.boissonService.addBoisson(c).subscribe(
+    const boisson = this.selectedBoisson;
+    const fromData = new FormData();
+    fromData.append('boisson', JSON.stringify(boisson));
+    fromData.append('file', this.boissonFile);
+
+    this.boissonService.addBoisson(fromData).subscribe(
       res => {
         this.initBoissons();
         this.loadBoissons();

@@ -9,6 +9,8 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { HomeComponent } from './views/home/home.component';
+import { TableComponent } from './views/restaurant/table.component';
+import { CommandeComponent } from './views/restaurant/commande.component';
 
 export const routes: Routes = [
   {
@@ -63,9 +65,14 @@ export const routes: Routes = [
         path: 'personne',
         loadChildren: './views/personne/personne.module#PersonneModule'
       },
+
       {
         path: 'repas',
-        loadChildren: './views/repas/repas.module#PersonneModule'
+        loadChildren: './views/repas/repas.module#RepasModule'
+      },
+      {
+        path: 'restaurant',
+        loadChildren: './views/restaurant/restaurant.module#RestaurantModule'
       },
       {
         path: 'base',
@@ -82,6 +89,10 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+      },
+      {
+        path: 'acceuil',
+        loadChildren: './views/acceuil/acceuil.module#AcceuilModule'
       },
       {
         path: 'icons',

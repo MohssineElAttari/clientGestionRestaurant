@@ -4,7 +4,7 @@ export class Dessert {
         public nom?: string,
         public type?: string,
         public info?: string,
-        public prixRepas?: number,
+        public prix?: number,
         public durreCuisson?: number,
         public photo?: string
     ) {

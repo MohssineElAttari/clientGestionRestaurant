@@ -1,0 +1,36 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <form [formGroup]="acceuilForm" class="form-horizontal">
+    <div class="row">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Type</label>
+        <div class="col-md-9">
+          <select class="form-control" formControlName="type" (change)="loadRepasNamesAndCounts($event.target.value)">
+            <option disabled="disabled">Sélectionnez un type de repas</option>
+            <option [value]="'repasPrincipal'">Repas principal</option>
+            <option [value]="'boisson'">Boisson</option>
+            <option [value]="'entree'">Entrée</option>
+            <option [value]="'dessert'">Dessert</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-10" style="margin-left: 8%;">
+      <div class="card">
+        <div class="card-title">
+          <h3 style="text-align:center;">Nombre de commande par type de repas </h3>
+        </div>
+        <div class="card-body">
+          <div style="display: block">
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+              [legend]="lineChartLegend" [chartType]="lineChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

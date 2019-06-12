@@ -13,6 +13,7 @@ export class DessertComponent implements OnInit {
   dessertForm: FormGroup;
   operation: string = 'add';
   selectedDessert: Dessert;
+  public dessertFile: any = File;
   @ViewChild('dangerModal')
   public dangerModal: ModalDirective;
 
@@ -27,16 +28,21 @@ export class DessertComponent implements OnInit {
       nom: '',
       type: '',
       info: '',
-      prixRepas: '',
+      prix: '',
       durreCuisson: '',
       photo: '',
     });
   }
-
+  fileChange(event) {
+    const file = event.target.files[0];
+    this.dessertFile = file;
+  }
   addDessert() {
-    //console.log('nom  ' + this.selectedDessert.nom);
-    const c = this.dessertForm.value;
-    this.dessertService.addDessert(c).subscribe(
+    const dessert = this.selectedDessert;
+    const fromData = new FormData();
+    fromData.append('dessert', JSON.stringify(dessert));
+    fromData.append('file', this.dessertFile);
+    this.dessertService.addDessert(fromData).subscribe(
       res => {
         this.initDesserts();
         this.loadDesserts();
@@ -49,7 +55,7 @@ export class DessertComponent implements OnInit {
     this.dessertService.getDessert().subscribe(
       data => { this.desserts = data },
       error => { console.log('erreurrrrrrrr !') },
-      () => { console.log('Le chargement des Desserts est terminé ' + this.desserts[this.desserts.length - 1].nom) }
+      () => { console.log('Le chargement des Desserts est terminé ' ) }
     );
 
   }

@@ -31,8 +31,8 @@ export interface NavData {
 
 export const navItems: NavData[] = [
   {
-    name: 'Dashboard',
-    url: '/dashboard',
+    name: 'Acceuil',
+    url: '/acceuil',
     icon: 'icon-speedometer',
     badge: {
       variant: 'info',
@@ -77,7 +77,7 @@ export const navItems: NavData[] = [
     icon: 'icon-cursor',
     children: [
       {
-        name: 'Principale',
+        name: 'Repas Principale',
         url: '/repas/principale',
         icon: 'icon-cursor'
       },
@@ -90,12 +90,28 @@ export const navItems: NavData[] = [
         name: 'Desert',
         url: '/repas/dessert',
         icon: 'icon-cursor'
-      },{
+      }, {
         name: 'Boisson',
         url: '/repas/boissons',
         icon: 'icon-cursor'
+      }, {
+        name: 'images',
+        url: '/repas/images',
+        icon: 'icon-cursor'
       }
     ]
+  }, {
+    name: 'Commande',
+    url: '/restaurant/commande',
+    icon: 'icon-pie-chart'
+  }, {
+    name: 'Table',
+    url: '/restaurant/table',
+    icon: 'icon-pie-chart'
+  }, {
+    name: 'Table service',
+    url: '/restaurant/tableService',
+    icon: 'icon-pie-chart'
   },
   {
     name: 'Satastic',

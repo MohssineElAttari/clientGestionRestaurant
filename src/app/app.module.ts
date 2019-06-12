@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -47,9 +47,18 @@ import { HomeComponent } from './views/home/home.component';
 import { ControlMessagesComponent } from './controller/control-messages';
 import { ValidationService } from './service/validation.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BoissonService } from './service/boisson.service';
 
 @NgModule({
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -63,10 +72,18 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    CarouselModule.forRoot(),
+    CollapseModule.forRoot(),
+    PaginationModule.forRoot(),
+    PopoverModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
+
   ],
   declarations: [
-    AppComponent,ControlMessagesComponent,
+    AppComponent, ControlMessagesComponent,
     ...APP_CONTAINERS,
     P404Component,
     P500Component,
@@ -74,10 +91,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     HomeComponent
   ],
-  providers: [ClientService,LoginService,AppService,ValidationService, {
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [
+    ClientService,
+    LoginService,
+    AppService,
+    ValidationService,BoissonService,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

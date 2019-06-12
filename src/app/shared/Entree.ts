@@ -5,7 +5,8 @@ export class Entree {
         public type?: string,
         public info?: string,
         public prix?: number,
-        public duree?: number
+        public durreCuisson?: number,
+        public photo?:string
     ) {
 
     }

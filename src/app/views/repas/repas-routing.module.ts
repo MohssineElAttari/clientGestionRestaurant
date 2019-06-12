@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { BoissonComponent } from './boisson.component';
 import { EntreeComponent } from './entree.component';
 import { DessertComponent } from './dessert.component';
+import { RepasPrincipaleComponent } from './repasPrincipale.component';
+import { ImageComponent } from './image.component';
 
 // import { FormsComponent } from './forms.component';
 // import { SwitchesComponent } from './switches.component';
@@ -32,19 +34,35 @@ const routes: Routes = [
         data: {
           title: 'boissons'
         },
-      }, {
+      },
+      {
         path: 'entree',
         component: EntreeComponent,
         data: {
           title: 'entrees'
         },
-      },{
+      },
+      {
         path: 'dessert',
         component: DessertComponent,
         data: {
           title: 'dessert'
         },
       },
+      {
+        path: 'principale',
+        component: RepasPrincipaleComponent,
+        data: {
+          title: 'Repas principale'
+        },
+      },{
+        path: 'images',
+        component: ImageComponent,
+        data: {
+          title: 'images'
+        },
+      },
+
       // },
       // {
       //   path: 'forms',

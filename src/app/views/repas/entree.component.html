@@ -24,7 +24,8 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="info">Info :</label>
               <div class="col-md-9">
-                <input class="form-control" id="info" type="text" name="info" [(ngModel)]="selectedEntree.info"  placeholder="Entree le info" >
+                <input class="form-control" id="info" type="text" name="info" [(ngModel)]="selectedEntree.info"
+                  placeholder="Entree le info">
               </div>
             </div>
             <div class="form-group row">
@@ -44,8 +45,7 @@
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="photo">Photo :</label>
               <div class="col-md-9">
-                <input type="text" id="photo" name="photo" [(ngModel)]="selectedEntree.photo" class="form-control"
-                  placeholder="Enter le photo" autocomplete="photo">
+                <input type="file" accept="image/*" (change)="fileChange($event)" style="height: 100%" class="form-control" [(ngModel)]="selectedEntree.photo" name="photo">
               </div>
             </div>
           </form>
@@ -116,7 +116,7 @@
                 <td>{{entree.info}}</td>
                 <td>{{entree.prix}}</td>
                 <td>{{entree.durreCuisson}}</td>
-                <td>{{entree.photo}}</td>
+                <td><img width="50" height="50" alt="Angular Logo" [src]="entree.photo"></td>
                 <td><button class="btn btn-outline-warning"
                     (click)="selectedEntree=entree;operation='edit';">Modifier</button>
                 </td>

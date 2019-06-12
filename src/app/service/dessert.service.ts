@@ -10,8 +10,8 @@ export class DessertService {
     getDessert(): Observable<any> {
         return this.http.get(API_URLS.DESSERT_URL);
     }
-    addDessert(dessert: Dessert): Observable<any> {
-        return this.http.post(API_URLS.DESSERT_URL + `/add`,dessert);
+    addDessert(formData: FormData): Observable<any> {
+        return this.http.post(API_URLS.DESSERT_URL + `/add`,formData);
     }
     updateDessert(dessert: Dessert): Observable<any> {
         return this.http.put(API_URLS.DESSERT_URL+`/update`,dessert);

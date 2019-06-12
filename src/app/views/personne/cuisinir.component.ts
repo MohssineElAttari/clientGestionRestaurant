@@ -37,7 +37,7 @@ export class CuisinirComponent implements OnInit {
 
   addCuisinir() {
     const c = this.cuisinirForm.value;
-    this.cuisnirService.addCuisinir(c).subscribe(
+    this.cuisnirService.addCuisinir(this.selectedCuisinir).subscribe(
       res => {
         this.initCuisinirs();
         this.loadCuisinir();

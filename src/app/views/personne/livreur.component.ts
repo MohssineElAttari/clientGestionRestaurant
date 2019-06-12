@@ -38,7 +38,7 @@ export class LivreurComponent implements OnInit {
   addLivreur() {
     console.log('nom  ' + this.selectedLivreur.nom);
     const c = this.LivreurForm.value;
-    this.livreurService.addLivreur(c).subscribe(
+    this.livreurService.addLivreur(this.selectedLivreur).subscribe(
       res => {
         this.initLivreurs();
         this.loadLivreurs();

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.appService.authenticate(this.credentials, ()=> {
       if (!this.appService.authenticated) {
         console.log('hello');
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/acceuil');
       }
       else {
         console.log('error');

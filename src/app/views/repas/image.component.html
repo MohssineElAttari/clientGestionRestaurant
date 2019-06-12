@@ -1,0 +1,86 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Ajouter Neuvau</strong> Image
+        </div>
+        <div class="card-body">
+          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="file-multiple-input">Image</label>
+              <div class="col-md-9">
+                <input type="file" accept="image/*" (change)="fileChange($event)" multiple style="height: 100%"  class="form-control">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary"
+            (click)="operation == 'add' ? addImage() : updateImage();loadImages();"><i class="fa fa-dot-circle-o"></i>
+            {{operation == 'add' ? 'Ajouter' :
+                              operation == 'edit' ? 'Modifier' : ''}}
+          </button>
+          <button type="reset" (click)="initImages();" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>
+            Annuler</button>
+        </div>
+      </div>
+    </div>
+    <!--/.row-->
+  </div>
+
+  <!--  -->
+  
+
+  <!--/.row-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> La Liste des Images
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-responsive table-responsive-sm table-striped ">
+            <thead>
+              <tr>
+                <th>Id</th>
+                 <th>Nom</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let image of images">
+                <td style="height: 100%">{{image.id}}</td>
+                <td> <img width="50" height="50" alt="Angular Logo" [src]="image.img"></td>
+                <!-- <td><button class="btn btn-outline-warning"
+                    (click)="selectedImage=image;operation='edit';">Modifier</button>
+                </td>
+                <td>
+
+                  <button type="button" class="btn btn-outline-danger mr-1" data-toggle="modal"
+                    (click)="selectedImage=image;dangerModal.show()">Supprimer </button>
+
+                </td> -->
+              </tr>
+
+            </tbody>
+          </table>
+          <!-- <nav>
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav> -->
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->

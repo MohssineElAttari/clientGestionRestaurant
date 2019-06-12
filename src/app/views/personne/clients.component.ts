@@ -38,7 +38,7 @@ export class ClientsComponent implements OnInit {
   addClient() {
     console.log('nom  ' + this.selectedClient.nom);
     const c = this.clientForm.value;
-    this.clientService.addClient(c).subscribe(
+    this.clientService.addClient(this.selectedClient).subscribe(
       res => {
         this.initClients();
         this.loadClients();

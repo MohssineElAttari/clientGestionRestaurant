@@ -10,7 +10,7 @@ export class EntreeService {
     getEntree(): Observable<any> {
         return this.http.get(API_URLS.ENTREE_URL);
     }
-    addEntree(entree: Entree): Observable<any> {
+    addEntree(entree: FormData): Observable<any> {
         return this.http.post(API_URLS.ENTREE_URL + `/add`, entree);
     }
     updateEntree(entree: Entree): Observable<any> {

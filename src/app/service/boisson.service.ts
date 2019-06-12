@@ -10,11 +10,11 @@ export class BoissonService {
     getBoisson(): Observable<any> {
         return this.http.get(API_URLS.BOISSON_URL);
     }
-    addBoisson(boisson: Boisson): Observable<any> {
+    addBoisson(boisson: FormData): Observable<any> {
         return this.http.post(API_URLS.BOISSON_URL + `/add`, boisson);
     }
     updateBoisson(boisson: Boisson): Observable<any> {
-        return this.http.put(API_URLS.BOISSON_URL+`/update`, boisson);
+        return this.http.put(API_URLS.BOISSON_URL + `/update`, boisson);
     }
     deleteBoisson(id: number): Observable<any> {
         console.log("iciiiii " + id);

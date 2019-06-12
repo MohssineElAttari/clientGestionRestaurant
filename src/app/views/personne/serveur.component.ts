@@ -50,7 +50,7 @@ export class ServeurComponent implements OnInit {
   addServeur() {
     console.log("nom" + this.selectedServeur.nom);
     const c = this.serveurForm.value;
-    this.serveurService.addServeur(c).subscribe(
+    this.serveurService.addServeur(this.selectedServeur).subscribe(
       res => {
         this.initServeurs();
         this.loadServeurs();

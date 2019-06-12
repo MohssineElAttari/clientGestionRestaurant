@@ -11,6 +11,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class EntreeComponent implements OnInit {
   entrees: Entree[];
   entreeForm: FormGroup;
+  public entreeFile: any = File;
   operation: string = 'add';
   selectedEntree: Entree;
   @ViewChild('dangerModal')
@@ -27,16 +28,22 @@ export class EntreeComponent implements OnInit {
       nom: '',
       type: '',
       info: '',
-      prixRepas: '',
+      prix: '',
       durreCuisson: '',
       photo: '',
     });
   }
-
+  fileChange(event) {
+    const file = event.target.files[0];
+    this.entreeFile = file;
+    console.log(file);
+  }
   addEntree() {
-    console.log('nom  ' + this.selectedEntree.nom);
-    const c = this.entreeForm.value;
-    this.entreeService.addEntree(c).subscribe(
+    const entree = this.selectedEntree;
+    const fromData = new FormData();
+    fromData.append('entree', JSON.stringify(entree));
+    fromData.append('file', this.entreeFile);
+    this.entreeService.addEntree(fromData).subscribe(
       res => {
         this.initEntrees();
         this.loadEntrees();
@@ -49,7 +56,7 @@ export class EntreeComponent implements OnInit {
     this.entreeService.getEntree().subscribe(
       data => { this.entrees = data },
       error => { console.log('erreurrrrrrrr !') },
-      () => { console.log('Le chargement des Entrees est terminé ' + this.entrees[this.entrees.length - 1].nom) }
+      () => { console.log('Le chargement des Entrees est terminé ') }
     );
 
   }

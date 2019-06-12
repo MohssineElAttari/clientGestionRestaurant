@@ -41,6 +41,10 @@ import { EntreeService } from '../../service/entree.service';
 import { EntreeComponent } from './entree.component';
 import { DessertComponent } from './dessert.component';
 import { DessertService } from '../../service/dessert.service';
+import { RepasPrincipaleComponent } from './repasPrincipale.component';
+import { RepasPrincipaleService } from '../../service/repasPrincipale.service';
+import { ImageComponent } from './image.component';
+import { ImageService } from '../../service/image.service';
 
 
 @NgModule({
@@ -60,8 +64,8 @@ import { DessertService } from '../../service/dessert.service';
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  declarations: [BoissonComponent,EntreeComponent,DessertComponent],
-  providers: [ValidationService, BoissonService,EntreeService,DessertService]
+  declarations: [BoissonComponent, EntreeComponent, DessertComponent, RepasPrincipaleComponent, ImageComponent],
+  providers: [ValidationService, BoissonService, EntreeService, DessertService, RepasPrincipaleService, ImageService]
 })
 
-export class PersonneModule { }
+export class RepasModule { }
